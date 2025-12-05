@@ -6,70 +6,59 @@
 - NVIDIA CUDA Toolkit (for CUDA implementation)
 - Windows environment with MSYS2
 
-```
-PC_Assignment_03/
-├── Serial/
-├── OpenMP/
-├── MPI/
-├── CUDA/
-└── README.md
-```
+
 
 ## Compilation Instructions
 
-### Serial Implementation
+### Serial Code Compilation
 ```bash
-cd Serial
-gcc -o matrix_serial matrix_serial.c
+gcc serial_code.c -o serial_code
 ```
 
-### OpenMP Implementation
+### OpenMP Code Compilation
 ```bash
-cd OpenMP
-gcc -fopenmp -o matrix_openmp matrix_openmp.c
+gcc -fopenmp openmp_code.c -o openmp_code
 ```
 
-### MPI Implementation
+### MPI Code Compilation
 ```bash
-cd MPI
-mpicc -o matrix_mpi matrix_mpi.c
+mpicc -o mpi_code mpi_code.c
 ```
 
-### CUDA Implementation
+### CUDA Code Compilation
 ```bash
-cd CUDA
-nvcc -o matrix_cuda matrix_cuda.cu
+nvcc cuda_code.cu -o cuda_code.exe
 ```
 
 ## Execution Instructions
 
 ### Serial
 ```bash
-./matrix_serial
+./serial_code
 ```
 
 ### OpenMP
 ```bash
 # Run with different thread counts (MSYS2 MinGW)
-export OMP_NUM_THREADS=1 && ./matrix_openmp
-export OMP_NUM_THREADS=2 && ./matrix_openmp
-export OMP_NUM_THREADS=4 && ./matrix_openmp
-export OMP_NUM_THREADS=8 && ./matrix_openmp
+export OMP_NUM_THREADS=1 && ./openmp_code
+export OMP_NUM_THREADS=2 && ./openmp_code
+export OMP_NUM_THREADS=4 && ./openmp_code
+export OMP_NUM_THREADS=8 && ./openmp_code
 ```
 
 ### MPI
 ```bash
 # Run with different process counts (MSYS2 MinGW)
-mpiexec -n 1 ./matrix_mpi
-mpiexec -n 2 ./matrix_mpi
-mpiexec -n 4 ./matrix_mpi
-mpiexec -n 8 ./matrix_mpi
+mpiexec -n 1 ./mpi_code
+mpiexec -n 2 ./mpi_code
+mpiexec -n 4 ./mpi_code
+mpiexec -n 8 ./mpi_code
 ```
 
 ### CUDA
 ```bash
 # Modify block size in source code before compilation
-./matrix_cuda
+./cuda_code.exe
 ```
 
 ## Notes
